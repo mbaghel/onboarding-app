@@ -8,10 +8,10 @@ ENV APPMODE=$APPMODE
 ENV APPENV=$APPENV
 
 # Copy the current directory into the Docker image
-COPY . /micro-frontends-profile-app
+COPY . /micro-frontends-onboarding-app
 
 # Set working directory for future use
-WORKDIR /micro-frontends-profile-app
+WORKDIR /micro-frontends-onboarding-app
 
 # Install the dependencies from package.json
 RUN npm install

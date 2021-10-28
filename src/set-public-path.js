@@ -1,3 +1,3 @@
 import { setPublicPath } from "systemjs-webpack-interop";
 
-setPublicPath("@topcoder/micro-frontends-profile-app");
+setPublicPath("@topcoder/micro-frontends-onboarding-app");

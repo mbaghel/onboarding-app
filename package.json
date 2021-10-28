@@ -1,5 +1,5 @@
 {
-  "name": "@topcoder/micro-frontends-profile-app",
+  "name": "@topcoder/micro-frontends-onboarding-app",
   "scripts": {
     "start": "node server.js",
     "dev": "cross-env APPENV=dev webpack-dev-server",
@@ -76,9 +76,9 @@
     "react-redux": "^7.2.3",
     "react-stickynode": "^1.4.1",
     "redux": "^4.0.5",
-    "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^6.1.2",
+    "redux-thunk": "^2.4.0",
     "valid-url": "^1.0.9"
   },
   "volta": {

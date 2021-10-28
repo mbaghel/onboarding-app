@@ -14,7 +14,9 @@ export default function Root() {
       <Provider store={store}>
         <>
           <App />
-          {process.env.NODE_ENV === "test" && <span hidden>Profile App</span>}
+          {process.env.NODE_ENV === "test" && (
+            <span hidden>Member Onboarding App</span>
+          )}
         </>
       </Provider>
     </LocationProvider>

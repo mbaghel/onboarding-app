@@ -2,7 +2,7 @@ let cssLocalIdent;
 if (process.env.APPMODE === "production") {
   cssLocalIdent = "[hash:base64:6]";
 } else {
-  cssLocalIdent = "profile_[path][name]___[local]___[hash:base64:6]";
+  cssLocalIdent = "onboarding_[path][name]___[local]___[hash:base64:6]";
 }
 
 const config = {

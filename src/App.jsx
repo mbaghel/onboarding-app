@@ -1,32 +1,74 @@
 /**
  * Main App component
  */
-import { Router } from "@reach/router";
-import { disableSidebarForRoute } from "@topcoder/micro-frontends-navbar-app";
-import React, { useLayoutEffect } from "react";
+import { navigate, Redirect, Router } from "@reach/router";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  disableSidebarForRoute,
+  getAuthUserProfile,
+} from "@topcoder/micro-frontends-navbar-app";
+import React, { useEffect, useLayoutEffect } from "react";
+import styles from "./styles/main.module.scss";
+import GetStarted from "./containers/GetStarted";
+import actions from "./actions";
+import _ from "lodash";
+import Loading from "./components/Loading";
 
-import NotFoundPage from "./components/NotFoundPage";
+const useProfile = () => {
+  const { isLoggedIn } = useSelector((state) => state.authUser);
+  const dispatch = useDispatch();
 
-import Profile from "./containers/Profile";
-import ProfileStats from "./containers/ProfileStats";
-import ErrorMessage from "./containers/ErrorMessage";
+  useEffect(() => {
+    let isMounted = true;
 
-import "styles/global.scss";
+    if (!isLoggedIn) {
+      getAuthUserProfile()
+        .then((res) => {
+          dispatch(
+            actions.authUser.authUserSuccess(
+              _.pick(res, [
+                "handle",
+                "firstName",
+                "lastName",
+                "photoUrl",
+                "addresses",
+              ])
+            )
+          );
+        })
+        .catch((err) => {
+          if (isMounted) {
+            navigate("/");
+          }
+        });
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isLoggedIn, dispatch]);
+
+  return isLoggedIn;
+};
 
 const App = () => {
   useLayoutEffect(() => {
-    disableSidebarForRoute("/profile/*");
+    disableSidebarForRoute("/onboard/*");
   }, []);
 
+  const isLoggedIn = useProfile();
+
   return (
-    <>
-      <Router>
-        <Profile exact path="/profile/:handle" />
-        <ProfileStats exact path="/profile/:handle/details" />
-        <NotFoundPage path="/profile/" />
-      </Router>
-      <ErrorMessage />
-    </>
+    <div className={styles["topcoder-micro-frontends-onboarding-app"]}>
+      {isLoggedIn ? (
+        <Router>
+          <Redirect from="/onboard" to="/onboard/get-started" exact />
+          <GetStarted path="/onboard/get-started" />
+        </Router>
+      ) : (
+        <Loading />
+      )}
+    </div>
   );
 };
 

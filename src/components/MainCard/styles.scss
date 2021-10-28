@@ -1,0 +1,15 @@
+@import "styles/include";
+
+.card {
+  @include rounded-card;
+  width: 86.6%;
+  margin: 32px 0;
+  padding: 32px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}

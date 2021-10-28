@@ -11,7 +11,7 @@ const webpack = require("webpack");
 module.exports = (webpackConfigEnv) => {
   const defaultConfig = singleSpaDefaults({
     orgName: "topcoder",
-    projectName: "micro-frontends-profile-app",
+    projectName: "micro-frontends-onboarding-app",
     webpackConfigEnv,
     disableHtmlGeneration: true,
   });
@@ -28,7 +28,7 @@ module.exports = (webpackConfigEnv) => {
   if (process.env.APPMODE == "production") {
     cssLocalIdent = "[hash:base64:6]";
   } else {
-    cssLocalIdent = "profile_[path][name]___[local]___[hash:base64:6]";
+    cssLocalIdent = "onboarding_[path][name]___[local]___[hash:base64:6]";
   }
 
   // modify the webpack config however you'd like to by adding to this object
@@ -43,7 +43,7 @@ module.exports = (webpackConfigEnv) => {
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      publicPath: "profile-app",
+      publicPath: "onboarding-app",
     },
     module: {
       rules: [
@@ -127,7 +127,7 @@ module.exports = (webpackConfigEnv) => {
     devServer: {
       hot: true,
       host: "0.0.0.0",
-      port: 8009,
+      port: 8030,
     },
   });
 };

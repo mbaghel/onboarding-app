@@ -1,7 +1,7 @@
 version: "3"
 services:
-  micro-frontends-profile-app:
-    image: micro-frontends-profile-app:latest
+  micro-frontends-onboarding-app:
+    image: micro-frontends-onboarding-app:latest
     build:
       context: ../
       dockerfile: docker/Dockerfile

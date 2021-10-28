@@ -1,4 +1,4 @@
-@import "styles/main";
+@import "styles/include";
 
 .loading-wrapper {
   width: 100%;
@@ -17,7 +17,8 @@
       font-size: 20px;
       color: $tc-turquoise-dark1;
       line-height: 24px;
-      @include barlow-bold;
+      @include font-barlow;
+      font-weight: 700;
     }
   }
 }

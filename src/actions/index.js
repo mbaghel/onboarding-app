@@ -1,7 +1,5 @@
-import profile from "./profile";
-import lookup from "./lookup";
+import authUser from "./authUser";
 
 export default {
-  profile,
-  lookup,
+  authUser,
 };
